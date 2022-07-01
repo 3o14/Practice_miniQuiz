@@ -64,203 +64,56 @@ function result() {
     while (a.firstChild) {
         a.removeChild(a.firstChild);
     }
-    // question.style.cssText = 'height: 50px';
+    scoreResult(score);
+}
+
+function scoreResult(score) {
+    const coment = document.createElement("div");
+    coment.setAttribute('class', 'coment');
+    let question = document.querySelector(".question");
+    question.appendChild(coment);
+    
+    let finalScore = 100 / quizLength * score;
+
+    const Score = document.createElement("div");
+    Score.setAttribute('class', 'Score');
+    question.appendChild(Score);
+    Score.innerText = finalScore + '점';
+
+    const wrongBox = document.createElement("div");
+    wrongBox.setAttribute('class', 'wrongBox');
+    question.appendChild(wrongBox);
+
+    const arrWrong = document.createElement("div");
+    arrWrong.setAttribute('class', 'arrWrong');
 
     switch (score) {
         case 5:
             console.log("5점");
-            score5(score);
+            coment.innerText = '오대박 만점! 감사함니당';
+            arrWrong.innerText = '틀린 문제가 없어..!(감동)';
             break;
         case 4:
             console.log("4점"); 
-            score4(score);
+            coment.innerText = '꽤 잘했넴 ㅎㅅㅎ';
             break;
         case 3:
             console.log("3점");
-            score3(score);
+            coment.innerText = '관심을 좀 더 가져줘';
             break;
         case 2:
             console.log("2점");
-            score2(score);
+            coment.innerText = '..너무행ㅜ';
             break;
         case 1:
             console.log("1점");
-            score1(score);
+            coment.innerText = '상처받음ㅇㅅㅇ.';
             break;
         case 0:
             console.log("0점");
-            score0(score);
+            coment.innerText = '빵점? ㅂㅂ';
             break;
-      }
-}
-
-function score5(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '만점, 참 잘했어요!'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-}
-
-function score4(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '꽤 잘했어요!'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-
-    const wrongBox = document.createElement("div");
-    wrongBox.setAttribute('class', 'wrongBox');
-    question.appendChild(wrongBox);
-
-    const arrWrong = document.createElement("div");
-    arrWrong.setAttribute('class', 'arrWrong');
-
-    const wrongMent = document.createElement("div");
-    wrongMent.setAttribute('class', 'wrongMent'); 
-    wrongMent.innerText = '틀린 문제도 다시 보자!';
-    wrongBox.appendChild(wrongMent);
-    
-    for(let i of wrong) {
-        arrWrong.innerHTML += '<br/>' + quiz[i].question + '&nbsp; &nbsp; 답: ' + quiz[i].correct;
     }
-    console.log(arrWrong);
-    wrongBox.appendChild(arrWrong);
-}
-
-function score3(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '중간은 했네 그래도!'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-
-    const wrongBox = document.createElement("div");
-    wrongBox.setAttribute('class', 'wrongBox');
-    question.appendChild(wrongBox);
-
-    const arrWrong = document.createElement("div");
-    arrWrong.setAttribute('class', 'arrWrong');
-
-    const wrongMent = document.createElement("div");
-    wrongMent.setAttribute('class', 'wrongMent'); 
-    wrongMent.innerText = '틀린 문제도 다시 보자!';
-    wrongBox.appendChild(wrongMent);
-    
-    for(let i of wrong) {
-        arrWrong.innerHTML += '<br/>' + quiz[i].question + '&nbsp; &nbsp; 답: ' + quiz[i].correct;
-    }
-    console.log(arrWrong);
-    wrongBox.appendChild(arrWrong);
-}
-
-function score2(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '나를 아직 잘 모르는구나'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-
-    const wrongBox = document.createElement("div");
-    wrongBox.setAttribute('class', 'wrongBox');
-    question.appendChild(wrongBox);
-
-    const arrWrong = document.createElement("div");
-    arrWrong.setAttribute('class', 'arrWrong');
-
-    const wrongMent = document.createElement("div");
-    wrongMent.setAttribute('class', 'wrongMent'); 
-    wrongMent.innerText = '틀린 문제도 다시 보자!';
-    wrongBox.appendChild(wrongMent);
-    
-    for(let i of wrong) {
-        arrWrong.innerHTML += '<br/>' + quiz[i].question + '&nbsp; &nbsp; 답: ' + quiz[i].correct;
-    }
-    console.log(arrWrong);
-    wrongBox.appendChild(arrWrong);
-}
-
-function score1(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '너무행ㅠ'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-
-    const wrongBox = document.createElement("div");
-    wrongBox.setAttribute('class', 'wrongBox');
-    question.appendChild(wrongBox);
-
-    const arrWrong = document.createElement("div");
-    arrWrong.setAttribute('class', 'arrWrong');
-
-    const wrongMent = document.createElement("div");
-    wrongMent.setAttribute('class', 'wrongMent'); 
-    wrongMent.innerText = '틀린 문제도 다시 보자!';
-    wrongBox.appendChild(wrongMent);
-    
-    for(let i of wrong) {
-        arrWrong.innerHTML += '<br/>' + quiz[i].question + '&nbsp; &nbsp; 답: ' + quiz[i].correct;
-    }
-    console.log(arrWrong);
-    wrongBox.appendChild(arrWrong);
-}
-
-function score0(score) {
-    const coment = document.createElement("div");
-    coment.setAttribute('class', 'coment');
-    let question = document.querySelector(".question");
-    question.appendChild(coment);
-    coment.innerText = '저 아세요?'
-    
-    let finalScore = 100 / quizLength * score;
-
-    const Score = document.createElement("div");
-    Score.setAttribute('class', 'Score');
-    question.appendChild(Score);
-    Score.innerText = finalScore + '점';
-
-    const wrongBox = document.createElement("div");
-    wrongBox.setAttribute('class', 'wrongBox');
-    question.appendChild(wrongBox);
-
-    const arrWrong = document.createElement("div");
-    arrWrong.setAttribute('class', 'arrWrong');
 
     const wrongMent = document.createElement("div");
     wrongMent.setAttribute('class', 'wrongMent'); 
